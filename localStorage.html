@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Local Storage Example</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="container">
+			<h2 class="text-center">Local Storage Sample</h2>
+			<h3>Saves the input text &#38; state of check boxes in <em>this</em> Local browser</h3>
+		<hr>
+			<div class="row">
+				<p class="col-md-4">
+				Enter some text in the input box or check the boxex, reopen the browser.
+				</p>
+				<div class="col-md-4">
+					<label>text 1: <input class="textBox" type="textbox" maxlength="15" id="tb1"></label>
+				</div>
+				<div class="col-md-2">
+					<label><input class="checkBox" type="checkbox" id="cb1"> checkbox 1</label>
+				</div>
+				<div class="col-md-2">
+					<label><input class="checkBox" type="checkbox" id="cb2" > checkbox 2</label>
+				</div>
+			</div>
+		<hr>
+			<div class="row">
+				<p class="col-md-4">
+				Enter some text in the input box or check the boxex, reopen the browser. 
+				</p>
+				<div class="col-md-4">
+					<label>text 2: <input class="textBox" type="textbox" maxlength="15" id="tb2"></label>
+				</div>
+				<div class="col-md-2">
+					<label><input class="checkBox" type="checkbox" id="cb3" > checkbox 3</label>
+				</div>
+				<div class="col-md-2">
+					<label><input class="checkBox" type="checkbox" id="cb4" > checkbox 4</label>
+				</div>
+			</div>
+		<hr>
+			<div class="row">
+				<p class="col-md-4">
+				Enter some text in the input box or check the boxex, reopen the browser.
+				</p>
+				<div class="col-md-4">
+					<label>text 3: <input class="textBox" type="textbox" maxlength="15" id="tb3"></label>
+				</div>
+				<div class="col-md-2">
+					<label><input class="checkBox" type="checkbox" id="cb5" > checkbox 5</label>
+				</div>
+				<div class="col-md-2">
+					<label><input class="checkBox" type="checkbox" id="cb6" > checkbox 6</label>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+	<script>
+		console.log(localStorage);
+
+		$('input.checkBox').each(function(){
+			if( localStorage.getItem(this.id) === 'true') 
+				$(this).prop('checked', true );
+
+		});
+
+		$('input.textBox').each(function(){
+			//console.log()
+			if( localStorage.getItem(this.id) !== '') 
+				$(this).val(localStorage.getItem(this.id));
+
+		});
+
+		$('input.checkBox').change(function(){
+
+			if($(this).is(':checked')) 
+				localStorage.setItem( this.id, true);
+					else 
+					localStorage.setItem( this.id, false);
+			//consoleLocalStorage();
+		});
+		$('input.textBox').on('keyup change', function(){
+			console.log($(this).val())
+				localStorage.setItem( this.id, $(this).val() );
+		});
+	</script>
+
+</html>
+
+
+
